@@ -38,6 +38,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
+                                    <th colspan="2">Действие</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -46,6 +47,7 @@
                                     <td>{{$category->id}}</td>
                                     <td>{{$category->title}}</td>
                                     <td><a href="{{route('admin.category.show', $category->id) }}"><i class="far fa-eye"></i></a></td>
+                                    <td><a href="{{route('admin.category.edit', $category->id) }}"><i class="fas fa-pen-fancy"></i></a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>
