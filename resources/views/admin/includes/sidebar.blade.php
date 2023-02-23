@@ -6,7 +6,7 @@
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
                 <a href="{{route('admin.category.index')}}" class="nav-link">
-                    <i class="nav-icon fa-solid fa-list"></i>
+                    <i class="fas fa-bars"></i>
                     <p>
                         Категории
                     </p>
