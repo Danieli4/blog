@@ -7,17 +7,16 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6 d-flex align-items-center">
-                        <h1 class="m-0 mr-2 ">{{$tag->title}}</h1>
-                        <td><a href="{{route('admin.tag.edit', $tag->id) }}" class="text-success"><i class="fas fa-pen-fancy"></i></a></td>
-                        <form action="{{route('admin.tag.delete', $tag->id)}}" method="post">
+                        <h1 class="m-0 mr-2 ">{{$post->title}}</h1>
+                        <td><a href="{{route('admin.post.edit', $post->id) }}" class="text-success"><i class="fas fa-pen-fancy"></i></a></td>
+                        <form action="{{route('admin.post.delete', $post->id)}}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="border-0 bg-transparent">
-                                <i class="fas fa-trash text-danger" role="button"></i>
+                                <i class="fas fa-trash text-danger" role="button" ></i>
                             </button>
                         </form>
                     </div><!-- /.col -->
-                </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
@@ -36,12 +35,12 @@
 
                                 <tr>
                                     <td>ID</td>
-                                    <td>{{$tag->id}}</td>
+                                    <td>{{$post->id}}</td>
 
                                 </tr>
                                 <tr>
                                     <td>Название</td>
-                                    <td>{{$tag->title}}</td>
+                                    <td>{{$post->title}}</td>
 
                                 </tr>
 
