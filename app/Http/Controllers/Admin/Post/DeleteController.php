@@ -11,7 +11,7 @@ class DeleteController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('admin.post.index')->with('status', 'Post ' . "$postØ->title" . ' deleted');
+        return redirect()->route('admin.post.index')->with('status', 'Post ' . "$post->title" . ' deleted');
 
     }
 }
