@@ -35,11 +35,19 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="password" placeholder="Пароль">
-                            @error('password')
-                            <div class="text-danger"> {{$message}}</div>
 
+
+                        <div class="form-group">
+                            <label>Выберите роль</label>
+                            <select name="role" class="form-control">
+                                @foreach($roles as $id=> $role)
+                                    <option value="{{$id}}"
+                                        {{$id == old('role') ? 'selected' : ''}}
+                                    >{{$role}}</option>
+                                @endforeach
+                            </select>
+                            @error('role')
+                            <div class="text-danger"> {{$message}}</div>
                             @enderror
                         </div>
 
