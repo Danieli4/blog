@@ -56,7 +56,8 @@
                                                         class="far fa-eye "></i></a></td>
                                             <td class="text-center"><a
                                                     href="{{route('admin.post.edit', $post->id) }}"><i
-                                                        class="fas fa-pen-fancy text-success"></i></a></td>
+                                                        class="fas fa-pen-fancy text-success"></i></a>
+                                            </td>
 
                                             <td>
                                                 <form action="{{route('admin.post.delete', $post->id)}}"
