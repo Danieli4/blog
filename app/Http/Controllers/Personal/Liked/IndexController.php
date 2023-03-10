@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Personal\Comment\Liked;
+namespace App\Http\Controllers\Personal\Liked;
 
 use App\Http\Controllers\Controller;
 
