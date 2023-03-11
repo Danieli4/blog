@@ -17,37 +17,68 @@
                 </div>
             </section>
             <div class="row">
-                <div class="col-lg-9 mx-auto">
-                    <section class="related-posts">
-                        <h2 class="section-title mb-4" data-aos="fade-up">Похожие посты</h2>
-                        <div class="row">
-                            @foreach($relatedPosts as $relatedPost)
-                                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
-                                    <img src="{{asset('storage/' . $relatedPost->main_image)}}" alt="related post"
-                                         class="post-thumbnail">
-                                    <p class="post-category">{{$relatedPost->category->title}}</p>
-                                    <a href="{{route('post.show', $relatedPost->id)}}"><h5
-                                            class="post-title">{{$relatedPost->title}}</h5></a>
-
-                                </div>
-                            @endforeach
-                        </div>
-                    </section>
+                <section>
                     @auth()
-                        <section class="comment-list">
-                            <h2 class="section-title mb-5" data-aos="fade-up">Комментарии ({{$post->comments->count()}}
-                                )</h2>
-                            @foreach($post->comments as $comment)
-                                <div class="comment-text  mb-4">
+                        <form action="{{route('post.like.store',$post->id)}}" method="post">
+                            @csrf
+                            <span>{{$post->likedUsers()->count()}}</span>
+                            <button type="submit" class="border-0 bg-transparent">
+                                {{--                                        variant 1--}}
+                                {{--                                        @auth()--}}
+                                {{--                                            @if(auth()->user()->likedPosts->contains($post->id))--}}
+                                {{--                                                <i class="fas fa-heart"></i>--}}
+                                {{--                                            @else--}}
+                                {{--                                                <i class="far fa-heart"></i>--}}
+                                {{--                                            @endif--}}
+                                {{--                                        @endauth--}}
+                                <i class="fa{{auth()->user()->likedPosts->contains($post->id) ? 's' : 'r'}} fa-heart"></i>
+
+                            </button>
+                        </form>
+                    @endauth
+                        @guest()
+                            <div class="class">
+                                <span>{{$post->likedUsers()->count()}}</span>
+                                <i class="far fa-heart"></i>
+                            </div>
+                        @endguest
+
+                </section>
+                <div class="col-lg-9 mx-auto">
+                    @if($relatedPosts->count()>0)
+                        <section class="related-posts">
+                            <h2 class="section-title mb-4" data-aos="fade-up">Похожие посты</h2>
+                            <div class="row">
+                                @foreach($relatedPosts as $relatedPost)
+                                    <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                                        <img src="{{asset('storage/' . $relatedPost->main_image)}}" alt="related post"
+                                             class="post-thumbnail">
+                                        <p class="post-category">{{$relatedPost->category->title}}</p>
+                                        <a href="{{route('post.show', $relatedPost->id)}}"><h5
+                                                class="post-title">{{$relatedPost->title}}</h5></a>
+
+                                    </div>
+                                @endforeach
+                                @endif
+                            </div>
+                        </section>
+
+                        @auth()
+                            <section class="comment-list">
+                                <h2 class="section-title mb-5" data-aos="fade-up">Комментарии
+                                    ({{$post->comments->count()}}
+                                    )</h2>
+                                @foreach($post->comments as $comment)
+                                    <div class="comment-text  mb-4">
                             <span class="username">
                                 <div class="font-weight-bold text-uppercase ">{{auth()->user()->name}}</div>
                               <span class="text-muted float-right">{{$comment->dateAsCarbon->diffForHumans()}}</span>
                             </span><!-- /.username -->
-                                    {{$comment->message}}
-                                </div>
-                            @endforeach
-                        </section>
-                    @endauth
+                                        {{$comment->message}}
+                                    </div>
+                                @endforeach
+                            </section>
+                        @endauth
 
 
                         <section class="comment-section">
