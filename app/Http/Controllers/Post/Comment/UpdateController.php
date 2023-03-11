@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Personal\Comment;
+namespace App\Http\Controllers\Post\Comment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\Comment\StoreRequest;
